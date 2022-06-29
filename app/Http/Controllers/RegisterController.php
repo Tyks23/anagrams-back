@@ -75,9 +75,8 @@ class RegisterController extends Controller
             $user = $this->create($request->validated());
             Auth::login($user);
     
-            return 'api_token';
+            return json_encode(['token' => Auth::user()->api_token]);
             // return api token for frontend to use
-            return 'success';
         } else {
             // TODO :: throw correct http error code
             // maybe throw some errors why didnt login succeed

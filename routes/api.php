@@ -2,6 +2,7 @@
 
 use App\Http\Controllers\RegisterController;
 use App\Http\Controllers\LoginController;
+use App\Http\Controllers\WordController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
@@ -20,15 +21,10 @@ Route::get('users', [UserController::class, 'index']);
 Route::post('register', [RegisterController::class, 'register']);
 //Route::post('register', 'RegisterController@register');
 
-
-// for "guest"s
-Route::group(['middleware' => ['guest']], function() {
-
+Route::middleware('auth:api')->get('/profile', function(Request $request) {
+    return $request->user();
 });
-
 // for "auth"enticated users
-Route::group(['middleware' => ['auth']], function() {
-    /**
-     * Logout Routes
-     */
-});
+/*Route::group(['middleware' => ['auth:api']], function () {
+    Route::get('word', [WordController::class, 'index']);
+});*/

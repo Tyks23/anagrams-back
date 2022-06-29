@@ -29,7 +29,8 @@ class LoginController extends Controller
 
         Auth::login($user);
 
-        // TODO :: good return some api token instead
-        return $this->authenticated($request, $user);
+        // parem
+        // return response()->json(['Success' => 'Logged out'], 200);
+        return json_encode(['token' => Auth::user()->api_token]);
     }
 }
