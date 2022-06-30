@@ -18,6 +18,7 @@ class LoginController extends Controller
      */
     public function login(LoginRequest $request)
     {
+        echo "login";
         $credentials = $request->getCredentials();
 
         if (!Auth::validate($credentials)) {
