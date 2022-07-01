@@ -18,10 +18,12 @@ class LoginController extends Controller
      */
     public function login(LoginRequest $request)
     {
-        echo "login";
+       
         $credentials = $request->getCredentials();
+        //echo print_r($credentials);
 
         if (!Auth::validate($credentials)) {
+            
             // TODO :: return normally with good code and good error
             return 'validation failed, user not exist';
         }
