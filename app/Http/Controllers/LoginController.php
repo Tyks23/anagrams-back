@@ -20,7 +20,7 @@ class LoginController extends Controller
     {
        
         $credentials = $request->getCredentials();
-        //echo print_r($credentials);
+        echo print_r($credentials);
 
         if (!Auth::validate($credentials)) {
             
