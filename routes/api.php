@@ -20,6 +20,7 @@ Route::post('login', [LoginController::class, 'login']);
 Route::get('users', [UserController::class, 'index']);
 Route::post('register', [RegisterController::class, 'register']);
 //Route::post('register', 'RegisterController@register');
+Route::middleware('auth:api')->post('handleSubmission', [WordController::class, 'handleSubmission']);
 
 Route::middleware('auth:api')->get('/profile', function(Request $request) {
     return $request->user();
