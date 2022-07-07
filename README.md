@@ -83,6 +83,13 @@ Used to upload a text document containing a wordbase to the applications databas
     "user_id": "[id]"
 }
 ```  
+Returns  
+```json
+{
+    "word":"[word]",
+    "word":"[word2]"
+}
+```  
 Request must contain the "Authorization": "Bearer [token]" header.
 Used to find anagrams from the wordbases the user has provided for the word the user has provided. It goes through validation middlewear and the request must be authenticated.  
 
