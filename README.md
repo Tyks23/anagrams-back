@@ -73,9 +73,9 @@ Used to login existing users and returns the authentication token and user_id to
     "user_id": "[id]"
 }
 { 
-    headers: [
+    headers: {
         "Authorization": "Bearer [token]"
-    ]
+    }
 }
 ```  
 Used to upload a text document containing a wordbase to the applications database. It goes through validation middlewear and the request must be authenticated.  
