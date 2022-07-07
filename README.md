@@ -66,6 +66,13 @@ Used to login existing users and returns the authentication token and user_id to
   
 ### Word
 Requests must contain the "Authorization": "Bearer [token]" header.  
+If requests are made without or invalid token API returns  
+Status 401
+```json
+{
+    "message": "Unauthenticated.";
+}
+``` 
   
 **Upload Wordbase** -> [URL]/api/uploadWordbase -> POST
 ```json
