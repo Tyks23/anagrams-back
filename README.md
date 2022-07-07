@@ -26,5 +26,5 @@ After confirming that you gave PHP and Composer installed on your system you wil
 
 After confirming that you have PostgreSQL installed on the system you will need to follow these steps:  
 1) Create a database named 'anagrams'  
-2) Change the variables in the .env to reflect the properties of your database
+2) Change the variables in the .env to reflect the properties of your database  
 ![.env image](https://i.imgur.com/eca34Tt.png)
