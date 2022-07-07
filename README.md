@@ -31,7 +31,7 @@ After confirming that you have PostgreSQL installed on the system you will need 
 
 ## Endpoints
 ### User
-Registration -> [URL]/api/register -> POST
+**Registration** -> [URL]/api/register -> POST
 ```json
 {
     "email": "[email]", 
@@ -48,7 +48,7 @@ Returns
 ```  
 Used to register new users to the database and returns the authentication token and user_id to the browser.  
   
-Login -> [URL]/api/login -> POST
+**Login** -> [URL]/api/login -> POST
 ```json
 {
     "email": "[email]", 
@@ -64,5 +64,34 @@ Returns
 ```  
 Used to login existing users and returns the authentication token and user_id to the browser.  
   
+### Word
+
+**Upload Wordbase** -> [URL]/api/uploadWordbase -> POST
+```json
+{
+    "file": "[file.txt]", 
+    "user_id": "[id]"
+}
+{ 
+    headers: [
+        "Authorization": "Bearer [token]"
+    ]
+}
+```  
+Used to upload a text document containing a wordbase to the applications database. It goes through validation middlewear and the request must be authenticated.  
+
+**Find Anagrams** -> [URL]/api/findAnagrams -> POST
+```json
+{
+    "word": "[word]", 
+    "user_id": "[id]"
+}
+{ 
+    headers: [
+        "Authorization": "Bearer [token]"
+    ]
+}
+```  
+Used to find anagrams from the wordbases the user has provided for the word the user has provided. It goes through validation middlewear and the request must be authenticated.  
 
 
