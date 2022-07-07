@@ -37,11 +37,11 @@ After confirming that you have PostgreSQL installed on the system you will need 
 3) Navigate to anagrams-back directory in CLI
 4) Enter command "php artisan migrate:refresh" to generate database  
   
-Database is no populated with tables and ready to use.
+Database is now populated with tables and ready to use.
 
 #### Testing
 
-After successfully setting up the project you may run tests.  
+After successfully setting up the project, you may run tests.  
 To do this follow these steps:  
 1) Navigate to anagram-back directory in CLI
 2) Enter command "php artisan test"  
