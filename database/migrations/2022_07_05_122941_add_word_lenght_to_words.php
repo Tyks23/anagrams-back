@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateWordsTable extends Migration
+class AddWordLenghtToWords extends Migration
 {
     /**
      * Run the migrations.
@@ -13,10 +13,9 @@ class CreateWordsTable extends Migration
      */
     public function up()
     {
-        Schema::create('words', function (Blueprint $table) {
-            $table->id();
-            $table->string('word');
-            $table->decimal('value', 100, 2);
+        Schema::table('words', function (Blueprint $table) {
+            //
+            $table->integer('length');
         });
     }
 
@@ -27,6 +26,8 @@ class CreateWordsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('words');
+        Schema::table('words', function (Blueprint $table) {
+            //
+        });
     }
 }

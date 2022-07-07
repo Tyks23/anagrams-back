@@ -12,7 +12,8 @@ class Word extends Model
     protected $fillable = [
         'word',
         'value',
-        'user_id'
+        'user_id',
+        'length'
     ];
 
     public $timestamps = false;

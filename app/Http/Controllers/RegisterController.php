@@ -49,7 +49,7 @@ class RegisterController extends Controller
         return Validator::make($data, [
             'name' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
-            'password' => ['required', 'string', 'min:8', 'confirmed'],
+            'password' => ['required', 'string', 'min:4', 'confirmed'],
         ]);
     }
 
@@ -75,7 +75,7 @@ class RegisterController extends Controller
             $user = $this->create($request->validated());
             Auth::login($user);
     
-            return json_encode(['token' => Auth::user()->api_token]);
+            return json_encode(['token' => Auth::user()->api_token, 'user_id' => Auth::user()->id]);
             // return api token for frontend to use
         } else {
             // TODO :: throw correct http error code

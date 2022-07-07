@@ -20,12 +20,12 @@ class LoginController extends Controller
     {
        
         $credentials = $request->getCredentials();
-        echo print_r($credentials);
 
         if (!Auth::validate($credentials)) {
             
-            // TODO :: return normally with good code and good error
-            return 'validation failed, user not exist';
+            // TODO :: return normally with good code and good 
+            return response()->view('incorrect login', [], 401);
+            //return 'validation failed, user not exist';
         }
 
         $user = Auth::getProvider()->retrieveByCredentials($credentials);
@@ -34,6 +34,6 @@ class LoginController extends Controller
 
         // parem
         // return response()->json(['Success' => 'Logged out'], 200);
-        return json_encode(['token' => Auth::user()->api_token]);
+        return json_encode(['token' => Auth::user()->api_token, 'user_id' => Auth::user()->id]);
     }
 }
