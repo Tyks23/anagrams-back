@@ -39,6 +39,7 @@ class WordTest extends TestCase
         return $response->decodeResponseJson()['user_id'];
     }
 
+   
     public function testSuccessfulWordbaseUpload(): void 
     {
         $user_id = $this->registerUser();
@@ -54,6 +55,9 @@ class WordTest extends TestCase
         $response->assertOk(); // checks 200
     }
 
+      /**
+     * @depends testSuccessfulWordbaseUpload
+     */
     public function testSuccessfulFindAnagram(): void
     {
 

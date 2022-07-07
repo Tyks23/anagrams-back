@@ -1,6 +1,11 @@
+<?php
+
 namespace App\Services;
 
-class WordParsingService extends Service
+/**
+ * Class WordParseService.
+ */
+class WordParseService
 {
     protected $letterValueArray = array(
         2 => 'a', 3 => 'b', 5 => 'c', 7 => 'd',
@@ -13,7 +18,7 @@ class WordParsingService extends Service
         109 => 'ö', 113 => 'ü', 1 => '-'
     );
 
-    private function calculateWordValue($word)
+    public function calculateWordValue($word)
     {
         $wordValue = 1;
         $wordArr = str_split(strtolower(utf8_decode($word)));
