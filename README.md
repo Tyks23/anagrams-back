@@ -28,3 +28,7 @@ After confirming that you have PostgreSQL installed on the system you will need 
 1) Create a database named 'anagrams'  
 2) Change the variables in the .env to reflect the properties of your database  
 ![.env image](https://i.imgur.com/eca34Tt.png)
+
+## Endpoints
+Registration -> <URL>/api/register -> POST:{'email': '<email>'}
+
