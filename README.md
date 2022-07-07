@@ -12,7 +12,7 @@ The anagram finder is a webapp created with a React + Laravel + PostgreSQL stack
 
 ### Backend 
 
-The webapp requires the following to be installed on the system before it can me started:  
+The webapp requires the following to be installed on the system before it can be started:  
 PHP - https://www.php.net/downloads.php  
 Composer - https://getcomposer.org/download/  
 PostgreSQL - https://www.postgresql.org/download/  
