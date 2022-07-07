@@ -1,19 +1,7 @@
-<?php
+namespace App\Services;
 
-namespace App\Http\Controllers;
-use App\Models\Word;
-use Illuminate\Http\Request;
-use Illuminate\Support\Facades\DB;
-use App\Services\WordParsingService;
-
-class AnagramController extends Controller
+class WordParsingService extends Service
 {
-    //
-    public function __construct()
-    {
-        $this->middleware('auth:api');
-    }
-
     protected $letterValueArray = array(
         2 => 'a', 3 => 'b', 5 => 'c', 7 => 'd',
         11 => 'e', 13 => 'f', 17 => 'g', 19 => 'h',
@@ -35,19 +23,5 @@ class AnagramController extends Controller
         }
         
         return $wordValue;
-    }
-
-    protected function findAnagrams(Request $request) 
-    {
-        $words = DB::table('words')
-                //->where('word', '=', 'dog')
-                ->select('word')
-                ->where('value', '=', WordParsingService::calculateWordValue($request->word))
-                ->where('user_id', '=', $request->user_id)
-                ->where('length', '=', strlen($request->word))
-                ->distinct()
-                ->get();
-
-        return $words;
     }
 }
