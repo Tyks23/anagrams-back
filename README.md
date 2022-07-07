@@ -70,7 +70,7 @@ If requests are made without or invalid token API returns
 Status 401
 ```json
 {
-    "message": "Unauthenticated.";
+    "message": "Unauthenticated."
 }
 ``` 
   
