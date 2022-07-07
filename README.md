@@ -20,14 +20,33 @@ PostgreSQL - https://www.postgresql.org/download/
 
 #### Laravel setup
 After confirming that you gave PHP and Composer installed on your system you will need to follow these steps:  
+1) Clone repo
+2) Navigate to anagram-back directory with CLI
+3) Enter command "composer install"
+4) Enter command "php artisan serve"  
+  
+Backend application is now running on port 8000(can be configured in .env).
 
 
 #### Database setup
 
 After confirming that you have PostgreSQL installed on the system you will need to follow these steps:  
-1) Create a database named 'anagrams'  
+1) Create a postgre database named 'anagrams'  
 2) Change the variables in the .env(example of .env is included with the name .envExample) to reflect the properties of your database  
 ![.env image](https://i.imgur.com/eca34Tt.png)
+3) Navigate to anagrams-back directory in CLI
+4) Enter command "php artisan migrate:refresh" to generate database  
+  
+Database is no populated with tables and ready to use.
+
+#### Testing
+
+After successfully setting up the project you may run tests.  
+To do this follow these steps:  
+1) Navigate to anagram-back directory in CLI
+2) Enter command "php artisan test"  
+  
+This will run Feature and Unit test and display the results in the CLI.
 
 ## Endpoints
 ### User
