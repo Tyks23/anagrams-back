@@ -30,5 +30,5 @@ After confirming that you have PostgreSQL installed on the system you will need 
 ![.env image](https://i.imgur.com/eca34Tt.png)
 
 ## Endpoints
-Registration -> <URL>/api/register -> POST:{'email': '<email>'}
+Registration -> [URL]/api/register -> POST:{'email': '<email>'}
 
