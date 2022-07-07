@@ -30,5 +30,19 @@ After confirming that you have PostgreSQL installed on the system you will need 
 ![.env image](https://i.imgur.com/eca34Tt.png)
 
 ## Endpoints
-Registration -> [URL]/api/register -> POST:{'email': '<email>'}
+Registration -> [URL]/api/register -> POST:{"email": "[email]", "password": ["password"], "name":[name]}  
+Returns {"token":"[token]","user_id":[id]} 
+Used to register new users to the database and returns the authentication token and user_id to the browser.  
+  
+Login -> [URL]/api/login -> POST:
+```json
+{
+ "email": "[email]", 
+ "password": ["password"]
+}
+```  
+Returns {"token":"[token]","user_id":[id]} 
+Used to login existing users and returns the authentication token and user_id to the browser.  
+  
+
 
