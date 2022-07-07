@@ -32,7 +32,7 @@ Backend application is now running on port 8000(can be configured in .env).
 
 After confirming that you have PostgreSQL installed on the system you will need to follow these steps:  
 1) Create a postgre database named 'anagrams'  
-2) Change the variables in the .env(example of .env is included with the name .envExample) to reflect the properties of your database  
+2) Change the variables in the .env(example of .env is included with the name .env.example) to reflect the properties of your database  
 ![.env image](https://i.imgur.com/eca34Tt.png)
 3) Navigate to anagrams-back directory in CLI
 4) Enter command "php artisan migrate:refresh" to generate database  
