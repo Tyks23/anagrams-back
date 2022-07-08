@@ -21,12 +21,34 @@ class WordParseService
     public function calculateWordValue($word)
     {
         $wordValue = 1;
+        $word =  str_replace(array("\r", "\n", " "), '', $word);
         $wordArr = str_split(strtolower(utf8_decode($word)));
 
         for ($i = 0; $i < count($wordArr); $i++) {    
             $wordValue *= array_search(utf8_encode($wordArr[$i]), $this->letterValueArray);
         }
-        
         return $wordValue;
+    }
+
+    public function parseTxtDocument($document)
+    {
+        $wordArr = array();
+        $handle = fopen($document, "r");
+        if ($handle) {
+            while (($line = fgets($handle)) != false) {    
+
+                utf8_decode($line);
+                //word validation maybe should be function?
+                $line = str_replace(array("\r", "\n"), '', $line);
+                if(preg_match("/^[a-zäöäü-]+$/", $line, $match))
+                {
+                    //echo $line . " length is " . strlen($line);
+                    //echo $line . " " .  $this->calculateWordValue($line);
+                    array_push($wordArr, array("word"=>$line, "value"=>(new WordParseService)->calculateWordValue($line), "length" => strlen($line)));
+                }       
+            }
+            fclose($handle);
+        }
+        return $wordArr;
     }
 }

@@ -18,6 +18,7 @@ class AnagramController extends Controller
 
     protected function findAnagrams(Request $request) 
     {
+        $request->word = str_replace(' ', '', $request->word);
         $words = DB::table('words')
                 //->where('word', '=', 'dog')
                 ->select('word')
