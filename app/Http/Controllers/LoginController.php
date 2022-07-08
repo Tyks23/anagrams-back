@@ -22,7 +22,7 @@ class LoginController extends Controller
         $credentials = $request->getCredentials();
 
         if (!Auth::validate($credentials)) {
-            return response()->view('incorrect login', [], 401);
+            return response('Incorrect login', 401);
         }
 
         $user = Auth::getProvider()->retrieveByCredentials($credentials);

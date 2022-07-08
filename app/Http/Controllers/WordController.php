@@ -25,7 +25,7 @@ class WordController extends Controller
             }
             unlink($document->getRealPath());
         } else {
-            echo 'Request does not contain file';
+            return response('Request does not contain valid file', 400);
         }
     }
     protected function create(array $data, int $userId)
