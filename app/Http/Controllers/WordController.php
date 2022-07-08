@@ -12,43 +12,29 @@ class WordController extends Controller
     {
         $this->middleware('auth:api');
     }
-
     protected function uploadWordbase(Request $request)
     {
-
-    $destinationPath = 'uploads';
-        
         $fileKey = 'file';
+        
         if ($request->hasFile($fileKey)) {
-            $document = $request->file($fileKey);    
-            $documentName = $document->getClientOriginalName();
-            $documentLocation = $destinationPath . "/" . $documentName;
-            $document->move($destinationPath, $documentName);       
-            $wordArr = (new WordParseService)->parseTxtDocument($documentLocation);
-            foreach($wordArr as $word){
+            $document = $request->file($fileKey);
+            $wordArr = (new WordParseService)->parseTxtDocument($document->getRealPath());
+            foreach ($wordArr as $word) {
+                
                 $this->create($word, $request->user_id);
             }
-            unlink($documentLocation);
-            //peale parsimist kustuta fail
-            //pead saama dokumendi kätte uplodas austast-> jooksutama läbi parseTxtdocument -> panema sõna+numbri+user_id 'words' andmebaasi
-            //Storage::disk('local')->put($document, 'Contents');
+            unlink($document->getRealPath());
         } else {
             echo 'Request does not contain file';
         }
-        //echo 'has file? ' . $request->hasFile('wordss.txt') ? 'yes' : 'no' . PHP_EOL;
-        // storage/app/word.txt:
-        //echo 'submission handeled' . $request;  
     }
-
-
-    protected function create(array $data, $user_id)
+    protected function create(array $data, int $userId)
     {
         return Word::create([
             'word' => $data['word'],
             'value' => $data['value'],
-            'user_id' => $user_id,
+            'user_id' => $userId,
             'length' => $data['length']
-            //how get user_id hmmmm
         ]);
     }
 }

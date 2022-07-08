@@ -76,11 +76,8 @@ class RegisterController extends Controller
             Auth::login($user);
     
             return json_encode(['token' => Auth::user()->api_token, 'user_id' => Auth::user()->id]);
-            // return api token for frontend to use
         } else {
-            // TODO :: throw correct http error code
-            // maybe throw some errors why didnt login succeed
-            echo 'you are bad';
+            return response('Register failed', 422);
         }
     }
 }

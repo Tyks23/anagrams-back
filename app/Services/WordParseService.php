@@ -2,12 +2,11 @@
 
 namespace App\Services;
 
-/**
- * Class WordParseService.
- */
+use Ramsey\Uuid\Type\Decimal;
+
 class WordParseService
 {
-    protected $letterValueArray = array(
+    protected array $letterValueArray = array(
         2 => 'a', 3 => 'b', 5 => 'c', 7 => 'd',
         11 => 'e', 13 => 'f', 17 => 'g', 19 => 'h',
         23 => 'i', 29 => 'j', 31 => 'k', 37 => 'l',
@@ -18,34 +17,36 @@ class WordParseService
         109 => 'ö', 113 => 'ü', 1 => '-'
     );
 
-    public function calculateWordValue($word)
+    public function calculateWordValue(string $word): float
     {
         $wordValue = 1;
-        $word =  str_replace(array("\r", "\n", " "), '', $word);
+        $word =  str_replace(array('\r', '\n', ' '), '', $word);
         $wordArr = str_split(strtolower(utf8_decode($word)));
 
-        for ($i = 0; $i < count($wordArr); $i++) {    
+        for ($i = 0; $i < count($wordArr); $i++) {
             $wordValue *= array_search(utf8_encode($wordArr[$i]), $this->letterValueArray);
         }
         return $wordValue;
     }
 
-    public function parseTxtDocument($document)
+    public function parseTxtDocument($document): array
     {
         $wordArr = array();
         $handle = fopen($document, "r");
         if ($handle) {
-            while (($line = fgets($handle)) != false) {    
-
+            while (($line = fgets($handle)) != false) {
                 utf8_decode($line);
-                //word validation maybe should be function?
                 $line = str_replace(array("\r", "\n"), '', $line);
-                if(preg_match("/^[a-zäöäü-]+$/", $line, $match))
-                {
-                    //echo $line . " length is " . strlen($line);
-                    //echo $line . " " .  $this->calculateWordValue($line);
-                    array_push($wordArr, array("word"=>$line, "value"=>(new WordParseService)->calculateWordValue($line), "length" => strlen($line)));
-                }       
+                if (preg_match("/^[a-zäöäü-]+$/", $line, $match)) {
+                    array_push(
+                        $wordArr,
+                        array(
+                            'word' => $line,
+                            'value' => (new WordParseService)->calculateWordValue($line),
+                            'length' => strlen($line)
+                        )
+                    );
+                }
             }
             fclose($handle);
         }

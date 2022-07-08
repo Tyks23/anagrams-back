@@ -26,7 +26,4 @@ Route::post('findAnagrams', [AnagramController::class, 'findAnagrams'])->middlew
 Route::middleware('auth:api')->get('/profile', function(Request $request) {
     return $request->user();
 });
-// for "auth"enticated users
-/*Route::group(['middleware' => ['auth:api']], function () {
-    Route::get('word', [WordController::class, 'index']);
-});*/
+

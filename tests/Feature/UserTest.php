@@ -13,11 +13,7 @@ class UserTest extends TestCase
     
     use DatabaseTransactions;
 
-   /* protected function setUp(): void
-    {
-        //...some boilerplate with establish connection
-        $this->connection->beginTransaction();
-    }*/
+   
     protected $defaultEmail = 'test@test.ee';
     protected $defaultName = 'test';
     protected $defaultPassword = 'test1234';
@@ -145,25 +141,9 @@ class UserTest extends TestCase
     {
 
         $token = $this->registerUser();
-
-        //$response = $this->get('api/profile', ['token' => $token]);
-        //$response->assertOk();
-
         $response = $this->json('GET', 'api/profile', [] , ['HTTP_Authorization' => 'Bearer '. $token]);
-
         $response->assertStatus(200);
 
-        // has $id so can use to get profile :)
-        // @depends is the way to do it
+
     }
-
-    // test login
-    // test false login with false params
-    // test login out - maybe?
-    // test /profile päring
-
-    /*protected function tearDown(): void
-    {
-        $this->connection->rollback();
-    }*/
 }

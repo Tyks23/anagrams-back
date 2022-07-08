@@ -6,6 +6,7 @@ use Illuminate\Foundation\Testing\RefreshDatabase;
 use Illuminate\Foundation\Testing\WithFaker;
 use Tests\TestCase;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
+use Illuminate\Support\Facades\File;
 
 class WordTest extends TestCase
 {
@@ -21,45 +22,33 @@ class WordTest extends TestCase
     protected $defaultName = 'test';
     protected $defaultPassword = 'test1234';
 
-    public function test_example()
+
+    public function registerUser()
     {
-        $response = $this->get('/');
-
-        $response->assertStatus(200);
-    }
-
-    public function registerUser(): string{
         $user = [
             'email' => $this->defaultEmail,
             'name' => $this->defaultName,
             'password' => $this->defaultPassword,
         ];
 
-        $response = $this->post('api/register', $user);
-        return $response->decodeResponseJson()['user_id'];
+        return $this->post('api/register', $user)->decodeResponseJson();
     }
 
-   
-    public function testSuccessfulWordbaseUpload(): void 
+
+    public function testSuccessfulWordbaseUpload(): void
     {
-        $user_id = $this->registerUser();
+        $registerResponse = $this->registerUser();
+        $resourcePath = 'public\uploads\testwordCopy.txt';
+
+        File::copy(resource_path('public\uploads\testwordOriginal.txt'), resource_path($resourcePath));
 
         $file = [
-            'file' => new \Illuminate\Http\UploadedFile(resource_path('public\uploads\testword.txt'), 'testword.txt', null, null, true),
-            'user_id' => $this->$user_id,
+            'file' => new \Illuminate\Http\UploadedFile(resource_path($resourcePath), 'testwordCopy.txt', null, null, true),
+            'user_id' => $registerResponse['user_id']
         ];
 
-
-
-        $response = $this->post('api/findAnagrams', $file);
+        $response = $this->json('POST', 'api/uploadWordbase', $file, [ 'HTTP_Authorization' => 'Bearer ' . $registerResponse['token'], 'Accept' => 'application/json']);
+        //$this->post('api/uploadWordbase', $file);
         $response->assertOk(); // checks 200
-    }
-
-      /**
-     * @depends testSuccessfulWordbaseUpload
-     */
-    public function testSuccessfulFindAnagram(): void
-    {
-
-    }
+    } 
 }
