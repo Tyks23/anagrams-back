@@ -12,7 +12,7 @@ The anagram finder is a webapp created with a React + Laravel + PostgreSQL stack
 
 ### Backend 
 
-The webapp requires the following to be installed on the system before it can me started:  
+The webapp requires the following to be installed on the system before it can be started:  
 PHP - https://www.php.net/downloads.php  
 Composer - https://getcomposer.org/download/  
 PostgreSQL - https://www.postgresql.org/download/  
@@ -37,11 +37,11 @@ After confirming that you have PostgreSQL installed on the system you will need 
 3) Navigate to anagrams-back directory in CLI
 4) Enter command "php artisan migrate:refresh" to generate database  
   
-Database is no populated with tables and ready to use.
+Database is now populated with tables and ready to use.
 
 #### Testing
 
-After successfully setting up the project you may run tests.  
+After successfully setting up the project, you may run tests.  
 To do this follow these steps:  
 1) Navigate to anagram-back directory in CLI
 2) Enter command "php artisan test"  
