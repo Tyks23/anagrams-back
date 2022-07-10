@@ -119,7 +119,7 @@ class UserTest extends TestCase
         ];
 
         $response = $this->post('api/login', $user);
-        $response->assertStatus(500);
+        $response->assertStatus(401);
     }
 
     public function testFailedLoginPwd(){
@@ -130,7 +130,7 @@ class UserTest extends TestCase
         ];
 
         $response = $this->post('api/login', $user);
-        $response->assertStatus(500);
+        $response->assertStatus(401);
     }
     
     
