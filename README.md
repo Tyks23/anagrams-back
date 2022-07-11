@@ -6,8 +6,10 @@ This is the backend repo for the Anagram finder webapp
 
 ## About Anagram finder
 
-The anagram finder is a webapp created with a React + Laravel + PostgreSQL stack. It allows a registered user to upload a wordbbase to the webapp and use the provided wordbase to find anagrams.
-
+The anagram finder is a webapp created with a React + Laravel + PostgreSQL stack. It allows a registered user to upload a wordbbase to the webapp and use the provided wordbase to find anagrams.  
+To submit a wordbase, you must format a txt document so that it contains one word per line, like so:  
+![php.ini image](https://i.imgur.com/nr7stjj.png)  
+A good example of a document containing a large wordbase is: http://www.eki.ee/tarkvara/wordlist/lemmad2013.txt  
 ## Dev environment setup
 
 ### Backend 
@@ -31,11 +33,13 @@ Backend application is now running on port 8000(can be configured in .env).
 #### Database setup
 
 After confirming that you have PostgreSQL installed on the system you will need to follow these steps:  
-1) Create a postgre database named 'anagrams'  
-2) Change the variables in the .env(example of .env is included with the name .env.example) to reflect the properties of your database  
+1) Uncomment 'extension=pdo_pgsql' and 'extension=pgsql' in the php.ini file:
+![php.ini image](https://i.imgur.com/3a2kQIb.png)
+2) Create a postgre database named 'anagrams'  
+3) Change the variables in the .env(example of .env is included with the name .env.example) to reflect the properties of your database  
 ![.env image](https://i.imgur.com/eca34Tt.png)
-3) Navigate to anagrams-back directory in CLI
-4) Enter command "php artisan migrate:refresh" to generate database  
+4) Navigate to anagrams-back directory in CLI
+5) Enter command "php artisan migrate:refresh" to generate database  
   
 Database is now populated with tables and ready to use.
 
