@@ -1,7 +1,9 @@
 # Anagram finder
 
 This is the backend repo for the Anagram finder webapp  
-**URL**: W.I.P  
+**URLs**:  
+Backend-> http://84.52.54.185:7535/  
+Frontend -> http://84.52.54.185:8888/  
 **Front end repo**: https://github.com/Tyks23/anagrams-front  
 
 ## About Anagram finder
