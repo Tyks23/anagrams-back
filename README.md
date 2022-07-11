@@ -12,6 +12,7 @@ The anagram finder is a webapp created with a React + Laravel + PostgreSQL stack
 To submit a wordbase, you must format a txt document so that it contains one word per line, like so:  
 ![php.ini image](https://i.imgur.com/nr7stjj.png)  
 A good example of a document containing a large wordbase is: http://www.eki.ee/tarkvara/wordlist/lemmad2013.txt  
+**Notice**: Due to the server being currently hosted on a feeble raspberry pi, large files may overload the the hardware. Therefore it is recommended to not exceed 1000 words per wordbase upload while using the web app. Local dev environment has successfully uploaded files containing upto 200 000 words. 
 ## Dev environment setup
 
 ### Backend 
