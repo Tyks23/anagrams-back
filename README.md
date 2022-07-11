@@ -33,7 +33,7 @@ Backend application is now running on port 8000(can be configured in .env).
 #### Database setup
 
 After confirming that you have PostgreSQL installed on the system you will need to follow these steps:  
-1) Uncomment 'extension=pdo_pgsql' and 'extension=pgsql' in the php.ini file:
+1) Uncomment 'extension=pdo_pgsql' and 'extension=pgsql' in the php.ini file:  
 ![php.ini image](https://i.imgur.com/3a2kQIb.png)
 2) Create a postgre database named 'anagrams'  
 3) Change the variables in the .env(example of .env is included with the name .env.example) to reflect the properties of your database  
