@@ -2,7 +2,8 @@
 
 This is the backend repo for the Anagram finder webapp  
 **URLs**:  
-* **Hosting Terminated**  
+**Hosting Terminated**  
+  
 **Front end repo**: https://github.com/Tyks23/anagrams-front  
 
 ## About Anagram finder
